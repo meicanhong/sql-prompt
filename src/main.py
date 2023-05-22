@@ -1,3 +1,4 @@
+from src.util.chatgpt import ChatGPT
 from src.util.mysql import MySQLUtil
 
 
@@ -17,9 +18,17 @@ def get_create_table(database: str, table: str):
 
 
 if __name__ == '__main__':
-    databases = get_databases()
-    for database in databases:
-        tables = get_tables(database[0])
-        for table in tables:
-            create_table = get_create_table(database[0], table[0])
-            print(create_table[0][1] + '\n')
+    chatgpt = ChatGPT()
+    chatgpt.ask("")
+    database = 'employees'
+    tables = get_tables(database)
+    ddls = []
+    for table in tables:
+        create_table = get_create_table(database, table[0])
+        ddls.append(create_table[0][1])
+
+    ddls = '\n'.join(ddls)
+    chatgpt.ask("我要你扮演一个专业DBA。我将提供给你数据表结构以及我的需求，你的目标是给我可执行的SQL语句，无需做任何额外解释，只返回可执行的SQL语句。")
+    chatgpt.ask("这是我的表结构 \n" + ddls)
+    chatgpt.ask("我想要查询所有员工的姓名，薪水，以及部门名称。")
+
