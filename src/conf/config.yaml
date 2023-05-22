@@ -1,0 +1,8 @@
+database:
+  host: localhost
+  port: 3306
+  username: root
+  password: danny
+  database: employees
+chatgpt:
+  api_key: sk-xxxxxxxx

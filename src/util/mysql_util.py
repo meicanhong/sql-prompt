@@ -1,17 +1,12 @@
+from src.conf.config import DATABASE_CONF
 import mysql.connector
 
-
 class MySQLUtil:
-    host = "localhost"
-    user = "root"
-    password = "danny"
-    database = "employees"
-
-    def __init__(self, host="localhost", user="root", password="danny", database="employees"):
-        self.host = host
-        self.user = user
-        self.password = password
-        self.database = database
+    def __init__(self):
+        self.host = DATABASE_CONF['host']
+        self.user = DATABASE_CONF['username']
+        self.password = DATABASE_CONF['password']
+        self.database = DATABASE_CONF['database'] if DATABASE_CONF['database'] else None
 
     def get_connection(self):
         return mysql.connector.connect(

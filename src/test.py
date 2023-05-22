@@ -1,5 +1,5 @@
 from src.util.chatgpt import ChatGPT
-from src.util.mysql import MySQLUtil
+from src.util.mysql_util import MySQLUtil
 
 
 def get_databases():

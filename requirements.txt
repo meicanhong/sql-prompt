@@ -1,1 +1,4 @@
 revChatGPT>=5.1.0
+Flask>=2.3.2
+mysql-connector-python>=8.0.33
+pyyaml>=6.0
