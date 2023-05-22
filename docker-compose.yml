@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'mydb'
+      MYSQL_USER: 'danny'
+      MYSQL_PASSWORD: 'danny'
+      MYSQL_ROOT_PASSWORD: 'danny'
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./test_data:/test_data
